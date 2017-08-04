@@ -19,7 +19,7 @@ path: /catalog/buttons/
 The MDC Button component is a spec-aligned button component adhering to the
 [Material Design button requirements](https://material.io/guidelines/components/buttons.html).
 It works without JavaScript with basic functionality for all states.
-If you initiate the JavaScript object for a button, then it will be enhanced with ripple effects. (Not yet implemented)
+If you initiate the JavaScript object for a button, then it will be enhanced with ripple effects.
 
 ## Design & API Documentation
 
@@ -40,23 +40,21 @@ npm install --save @material/button
 
 ## Usage
 
-### Flat
+### Button type
+
+> note: Examples and documents use generic `<button>`, but users can also apply
+> `mdc-button` to `<a class="mdc-button">Link Button</a>` if that makes semantic
+> meaning.
+
+#### Text Button
 
 ```html
 <button class="mdc-button">
-  Flat button
+  Text button
 </button>
 ```
 
-### Colored
-
-```html
-<button class="mdc-button mdc-button--accent">
-  Colored button
-</button>
-```
-
-### Raised
+#### Raised Button
 
 ```html
 <button class="mdc-button mdc-button--raised">
@@ -64,11 +62,29 @@ npm install --save @material/button
 </button>
 ```
 
-### Disabled
+### Button state
+
+#### Disabled
+
+Users can add `disabled` directly to button element or set the fieldset containing
+the button to `disabled` to disable a button. Disabled button could not be interacted
+with and have no visual interaction effect.
 
 ```html
 <button class="mdc-button mdc-button--raised" disabled>
   Raised disabled button
+</button>
+```
+
+### Colored
+
+Button have a default baseline color of rgb(98, 25, 130), but it could also be set
+to adopt application's primary and accent color by adding `mdc-button--primary` or
+`mdc-button--accent` modifier.
+
+```html
+<button class="mdc-button mdc-button--accent">
+  Colored button
 </button>
 ```
 
