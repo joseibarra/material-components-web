@@ -14,17 +14,15 @@
 // limitations under the License.
 //
 
+@import "./mixins";
 @import "@material/elevation/mixins";
-@import "@material/ripple/mixins";
 @import "@material/theme/mixins";
 @import "@material/typography/mixins";
 
 // postcss-bem-linter: define button
 
 .mdc-button {
-  @include mdc-ripple-base;
-  @include mdc-ripple-bg((pseudo: "::before"));
-  @include mdc-ripple-fg((pseudo: "::after"));
+  @include mdc-button-ripple;
   @include mdc-theme-prop(color, text-primary-on-light);
   @include mdc-typography-base;
 
@@ -55,9 +53,7 @@
   }
 
   @include mdc-theme-dark {
-    @include mdc-ripple-base;
-    @include mdc-ripple-bg((pseudo: "::before", base-color: white, opacity: .14));
-    @include mdc-ripple-fg((pseudo: "::after", base-color: white, opacity: .14));
+    @include mdc-button-ripple($mdc-button-light-ripple-config);
     @include mdc-theme-prop(color, text-primary-on-dark);
 
     &:not(.mdc-ripple-upgraded) {
@@ -67,9 +63,7 @@
 
   @each $theme-style in (primary, accent) {
     &.mdc-button--#{$theme-style} {
-      @include mdc-ripple-base;
-      @include mdc-ripple-bg((pseudo: "::before", theme-style: $theme-style, opacity: .12));
-      @include mdc-ripple-fg((pseudo: "::after", theme-style: $theme-style, opacity: .12));
+      @include mdc-button-ripple((theme-style: $theme-style, opacity: .12));
     }
   }
 
@@ -106,9 +100,7 @@
 
     @each $theme-style in (primary, accent) {
       &.mdc-button--#{$theme-style} {
-        @include mdc-ripple-base;
-        @include mdc-ripple-bg((pseudo: "::before", base-color: white, opacity: .14));
-        @include mdc-ripple-fg((pseudo: "::after", base-color: white, opacity: .14));
+        @include mdc-button-ripple($mdc-button-light-ripple-config);
       }
     }
 
