@@ -35,6 +35,10 @@ fieldset {
   border: 0;
 }
 
+.blue-button {
+  @include mdc-button-color(#0000ff);
+}
+
 .mdc-toolbar {
   a {
     color: #f0f0f0;

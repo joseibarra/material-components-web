@@ -15,8 +15,49 @@
 //
 
 @import "@material/ripple/mixins";
+@import "@material/theme/functions";
+@import "@material/theme/mixins";
 
 $mdc-button-light-ripple-config: (base-color: white, opacity: .14);
+
+@mixin mdc-button-color-flat($color) {
+  @include mdc-button-ripple((base-color: $color, opacity: .12));
+  color: $color;
+}
+
+@mixin mdc-button-color-raised($color) {
+  @include mdc-button-ripple($mdc-button-light-ripple-config);
+  background-color: $color;
+  $lightOrDarkText: mdc-theme-light-or-dark($color);
+  @if ($lightOrDarkText == "light") {
+    $lightOrDarkText: "dark";
+  } @else {
+    $lightOrDarkText: "light";
+  }
+  @include mdc-theme-prop(color, "text-primary-on-" + $lightOrDarkText);
+
+  // postcss-bem-linter: ignore
+  &::before {
+    color: black;
+  }
+}
+
+@mixin mdc-button-color($color) {
+  @include mdc-button-color-flat($color);
+
+  @include mdc-theme-dark(".mdc-button", true) {
+    @include mdc-button-color-flat($color);
+  }
+
+  // postcss-bem-linter: ignore
+  &.mdc-button--raised {
+    @include mdc-button-color-raised($color);
+
+    @include mdc-theme-dark(".mdc-button", true) {
+      @include mdc-button-color-raised($color);
+    }
+  }
+}
 
 @mixin mdc-button-ripple($rippleConfig: ()) {
   @include mdc-ripple-base;
