@@ -61,12 +61,6 @@
     }
   }
 
-  @each $theme-style in (primary, accent) {
-    &.mdc-button--#{$theme-style} {
-      @include mdc-button-ripple((theme-style: $theme-style, opacity: .12));
-    }
-  }
-
   // postcss-bem-linter: ignore
   &:active {
     outline: none;
@@ -96,64 +90,6 @@
 
     &:active {
       @include mdc-elevation(8);
-    }
-
-    @each $theme-style in (primary, accent) {
-      &.mdc-button--#{$theme-style} {
-        @include mdc-button-ripple($mdc-button-light-ripple-config);
-      }
-    }
-
-    @include mdc-theme-dark(".mdc-button") {
-      @include mdc-theme-prop(background-color, primary);
-      @include mdc-theme-prop(color, text-primary-on-primary);
-
-      // postcss-bem-linter: ignore
-      &::before {
-        // We are explicitly not fully adhering to Material Design here.
-        // This should be the 700-shade when active instead of a black shade.
-        // Due to the complexity involved in adhering fully it is being ignored.
-        // Instead re-using the existing architecture for shading works just fine.
-        color: black;
-      }
-    }
-  }
-
-  &--primary {
-    @include mdc-theme-prop(color, primary);
-
-    @include mdc-theme-dark(".mdc-button") {
-      @include mdc-theme-prop(color, primary);
-    }
-
-    // postcss-bem-linter: ignore
-    &.mdc-button--raised {
-      @include mdc-theme-prop(background-color, primary);
-      @include mdc-theme-prop(color, text-primary-on-primary);
-
-      // postcss-bem-linter: ignore
-      &::before {
-        color: black;
-      }
-    }
-  }
-
-  &--accent {
-    @include mdc-theme-prop(color, accent);
-
-    @include mdc-theme-dark(".mdc-button") {
-      @include mdc-theme-prop(color, accent);
-    }
-
-    // postcss-bem-linter: ignore
-    &.mdc-button--raised {
-      @include mdc-theme-prop(background-color, accent);
-      @include mdc-theme-prop(color, text-primary-on-accent);
-
-      // postcss-bem-linter: ignore
-      &::before {
-        color: black;
-      }
     }
   }
 
